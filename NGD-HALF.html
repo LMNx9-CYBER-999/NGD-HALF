@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LMNx9 NAGAD HALF INFO</title>
+    <style>
+        #number::placeholder {
+            color: green;
+        }
+        body {
+            font-family: "Courier New", monospace;
+            margin: 20px;
+            .circle-image {
+                width: 100px;
+                height: 100px;
+                border-radius: 100%;
+                object-fit: cover;
+                border: 3px solid #7CFC00;
+                transform: translateX(+130%);
+                
+            }
+        }
+        input, button {
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 16px;
+            text-align: center;
+            color: #7CFC00;
+            border: 1.5px solid #7CFC00;
+            background-color: #000000;
+            font-family: "Courier New", monospace;
+        }
+        #response {
+            margin-top: 20px;
+            padding: 10px;
+            text-align: center;
+            color: #7CFC00;
+            border: 1.5px solid #7CFC00;
+            background-color: #000000;
+            font-family: "Courier New", monospace;
+        }
+    </style>
+    <script>
+        async function sendRequest() {
+            const number = document.getElementById('number').value;
+            const url = `https://api.pikaapis.my.id/nagad.php?msisdn=${number}`;
+            
+            try {
+                const response = await fetch(url);
+                const result = await response.text(); // or response.json() for JSON response
+                document.getElementById('response').innerText = result;
+            } catch (error) {
+                document.getElementById('response').innerText = 'LMNx9 Error : ' + error.message;
+            }
+        }
+    </script>
+</head>
+<body>
+    <img src="https://avatars.githubusercontent.com/u/156349062?s=400&u=bccae99483bfe37a4b9789cde3b9667aaa43785a&v=4" alt="Circle Image" class="circle-image">
+    <h1 style="color: #7CFC00; text-align: center; ">LMNx9 NAGAD HALF INFO</h1>
+    <h4 class="h4-color"> 
+        Developer : <a href="https://t.me/x_LMNx9" class="link-color"> DARK LMNx9 </a> 
+    </h4>
+    <style>
+      .h4-color {
+          text-align: center;
+          color: #7CFC00;
+      }
+      .link-color {
+          color: #7CFC00;
+      }
+      .link-color:hover {
+          color: #7CFC00;
+      }
+    </style>
+    <label for="number"><button>NUMBER : </button></label>
+    <input type="text" id="number" placeholder="Ex: 017********">
+    <button onclick="sendRequest()"> GET INFO </button>
+    <div id="response"></div>
+</body>
+</html>
