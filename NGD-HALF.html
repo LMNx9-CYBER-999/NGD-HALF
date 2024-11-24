@@ -48,7 +48,7 @@
             
             try {
                 const response = await fetch(url);
-                const result = await response.text(); // or response.json() for JSON response
+                const result = await response.json();
                 document.getElementById('response').innerText = result;
             } catch (error) {
                 document.getElementById('response').innerText = 'LMNx9 Error : ' + error.message;
